@@ -1,28 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { message, Tabs, Table, Space, Button, Modal, Layout, Menu, TabsProps } from 'antd';
+import { message, Tabs, Table, Space, Button, Layout, Menu } from 'antd';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { Content, Header } from 'antd/es/layout/layout';
 import { useNavigate } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 
 const { TabPane } = Tabs;
-
-const fetchArticle = async () => {
-    try {
-        const res = await fetch('http://localhost:9000/article/10/1');
-
-        if (!res.ok) {
-            throw new Error(`HTTP error! Status: ${res.status}`);
-        }
-        const data = await res.json();
-        return data;
-    } catch (error) {
-        console.error('Error during fetchArticle:', error);
-        throw error;
-    }
-};
 
 const AllPosts = () => {
     const nav = useNavigate();
